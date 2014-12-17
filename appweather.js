@@ -66,16 +66,16 @@ app.get('/', function(req, res) {
 	res.render('index.ejs');
 });
 
+
 //Login existing user
 app.get('/login', function(req, res) {
 	res.render('login');
 });
 
-app.post('/login', passport.authenticate('local',
-	{failureRedirect: '/login'}), function(req, res) {
-	res.redirect('/');
+app.post('/sessions/new', passport.authenticate('local',
+	{failureRedirect: '/'}), function(req, res) {
+	res.redirect('/profile');
 });
-
 
 
 app.get('/profile', function(req, res) {
@@ -84,10 +84,46 @@ app.get('/profile', function(req, res) {
 	res.render('profile', {user: user});
 });
 
+app.get('/results', function(req, res) {
+	var place = req.query['city'];
+
+	request('http://api.openweathermap.org/data/2.5/weather?APPID=7e6f34b596531a7ab8297633fd83f97f&q=' + place, function(err, response, body) {
+			if(!err) {
+				var city = JSON.parse(body);
+				console.log(city);
+				res.render('results.ejs', {location: city});
+			}
+	});
+});
+
+//New user sign up
+app.get('/users/new', function(req, res) {
+	res.render('users/new');
+});
+
+app.post('/users', function(req, res) {
+	var params = [req.body.username, req.body.password, req.body.email];
+
+	db.query('INSERT INTO users (username, password, email) VALUES ($1, $2, $3)', params, function(err, dbRes) {
+			if (!err) {
+				res.redirect('/');
+			}
+	});
+});
+
+
+
+
+
+
+
+
 app.get('/logout', function(req, res) {
 	req.logout();
 	res.redirect('/')
 });
+
+
 
 
 
