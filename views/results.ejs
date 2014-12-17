@@ -2,17 +2,70 @@
 <html>
 <head>
 	<title>Results</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<style>
+
+h1 {
+	font-size: 140px;
+}
+
+.topbar {
+	background-color: #011c28;
+	height: 55px;
+	padding-top: 10px;
+	padding-right: 20px;
+	text-align: right;
+}
+
+a {
+	color: white;
+}
+a:hover {
+	text-decoration: none;
+	color: white;
+}
+
+.pull-right {
+	float: right !important;
+	co
+}
+
+
+
+
+</style>
+
+
+
 </head>
 <body>
-	<h1><%= location.name %></h1>
-	<ul>
-		<li> <%=Math.floor((location.main.temp - 273.15) * 1.8 + 32) %> °F</li>
-		<li> <%=location.weather[0].description%></li>
-	</ul>
+	<div class="topbar">
+		<div class="content">
+		
+		
+		<button type="button" class="btn btn-primary"><a href="http://localhost:3000/logout">Logout</a></button>
+		</div>
+	</div>
 
-	<button><a href="http://localhost:3000/profile">Check another city</a></button>
-	<br/>
-	<button><a href="#">Save City</a></button>
+	<div class="container">
+		<h1><%= location.name %></h1>
+	</div>
+	
+	
+	<div class="pull-right">
+		<p id="temp"> <%=Math.floor((location.main.temp - 273.15) * 1.8 + 32) %> °F</p>
+		<p id="description"> <%=location.weather[0].description%></p>
+	
+
+		<button><a href="http://localhost:3000/profile">Check another city</a></button>
+		<form type="submit" method="POST" action="/locations/create">
+			<input type="hidden" name="location" value="<%= location.name %>">
+			<input type="submit" value="Save City">
+		</form>
+	</div>
 
 </body>
 </html>

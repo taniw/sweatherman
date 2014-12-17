@@ -87,7 +87,7 @@ app.get('/profile', function(req, res) {
 app.get('/results', function(req, res) {
 	var place = req.query['city'];
 
-	request('http://api.openweathermap.org/data/2.5/weather?APPID=7e6f34b596531a7ab8297633fd83f97f&q=' + place, function(err, response, body) {
+	request('http://api.openweathermap.org/data/2.5/weather?q=' + place, function(err, response, body) {
 			if(!err) {
 				var city = JSON.parse(body);
 				console.log(city);
@@ -122,3 +122,15 @@ app.get('/logout', function(req, res) {
 
 
 
+// goal 
+app.post('/locations/create', function(req, res) {
+	
+	db.query('INSERT INTO locations (location, users_id) VALUES ($1, $2)', [req.body.location, req.user.id], function(err, dbRes) {
+		if (!err) {
+			res.redirect('/profile');
+		}
+	});
+});
+  // db.query => INSERT into LOCATIONS
+  // LOCATIONS    look at other forms
+  // user_id, which is the foreign key       req.user.id
