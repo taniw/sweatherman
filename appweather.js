@@ -97,14 +97,10 @@ app.get('/results', function(req, res) {
 });
 
 
-
-
-
-
 //New user sign up
-app.get('/users/new', function(req, res) {
-	res.render('users/new');
-});
+// app.get('/users/new', function(req, res) {
+// 	res.render('users/new');
+// });
 
 app.post('/users', function(req, res) {
 	var params = [req.body.username, req.body.password, req.body.email];

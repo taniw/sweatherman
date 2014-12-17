@@ -8,18 +8,88 @@
 	<link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
 	<title>Profile</title>
 
+<style>
+h1 {
+	font-size: 175px;
+	
+}
+
+.topbar {
+	background-color: #011c28;
+	height: 55px;
+	padding-top: 10px;
+	padding-right: 20px;
+	text-align: right;
+}
+
+#username {
+	font-size: 18px;
+	float: left;
+	color: white;
+	margin-top: 4px;
+	margin-right: 10px;
+
+	
+}
+
+.content {
+	display: inline-block;
+}
+
+a {
+	color: white;
+}
+a:hover {
+	text-decoration: none;
+	color: white;
+}
+
+h2 {
+	margin-top: -10px;
+	font-size: 45px;
+}
+
+.weather {
+	text-align: center;
+
+}
+
+.navbar-form {
+	margin: 0 auto;
+	text-align: center;
+	padding-top: 20px;
+
+}
+
+</style>
+
 
 </head>
 <body>
-	<h1>hello,
-	</h1>
-	<h1>What's the Weather?</h1>
+	<div class="topbar">
+		<div class="content">
+			<p id="username"><% if (user) { %>
+				<%= user.username %>
+				<% } %>
+			</p>
+		
+		<button type="submit" class="btn btn-primary"><a href="http://localhost:3000/logout">Logout</a></button>
+		</div>
+	</div>
 
-	<form method="GET" action="/results">
-		<input type="text" name="city" placeholder="City">
-		<button>Search</button>
-	</form>
+	
+	
+	<div class="weather">
+		<h1>Hello.</h1>
+		<h2>What's the Weather?</h2>
 
-	<button><a href="http://localhost:3000/logout">Logout</a></button>
+		<form class="navbar-form" role="search" method="GET" action="/results">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="City Name" name="city">
+  </div>
+  <button type="submit" class="btn btn-default">Search</button>
+</form>
+	</div>
+	
 </body>
 </html>
