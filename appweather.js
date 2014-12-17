@@ -96,6 +96,11 @@ app.get('/results', function(req, res) {
 	});
 });
 
+
+
+
+
+
 //New user sign up
 app.get('/users/new', function(req, res) {
 	res.render('users/new');
@@ -112,37 +117,10 @@ app.post('/users', function(req, res) {
 });
 
 
-
-
-
-
-
-
 app.get('/logout', function(req, res) {
 	req.logout();
 	res.redirect('/')
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
