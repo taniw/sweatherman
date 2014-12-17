@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WTW.</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+<style>
+body {
+	background-color: white;
+	text-align: center;
+	margin: auto;
+}
+
+.jumbotron {
+	background: gray;
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
+	position: relative;
+}
+
+h1 {
+	font-family: 'Oswald', sans-serif;
+}
+
+h4 {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;	
+}
+
+.topbar {
+	background-color: #011c28;
+	height: 55px;
+	padding-top: 10px;
+	padding-right: 20px;
+	text-align: right;
+	
+}
+
+#signup {
+	float: left;
+	padding-left: 20px;
+}
+
+.modal-content {
+  width: 400px;
+  margin: auto;
+}
+
+</style>
+	
+</head>
+<body>
+	
+</div>
+
+	<div class="topbar">
+
+<div id="signup">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Sign Up</button>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" method="POST" action="/users">
+          <div class="form-group">
+            
+            <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+          </div>
+          <div class="form-group">
+            
+            <input class="form-control" id="password" type="password" placeholder="Password" name="password"></input>
+          </div>
+          <div class="form-group">
+            
+            <input type="text" class="form-control" id="email" placeholder="Email" name="email">
+          </div>
+    	  
+    	  <div class="modal-footer">
+    	    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    	    <button type="submit" class="btn btn-primary">Sign Up</button>
+    	  </div>
+
+        </form>
+      </div>
+    
+    </div>
+  </div>
+</div>
+
+
+
+<form class="form-inline" role="form" name="login" method="POST" action="/sessions/new">
+  <div class="form-group">
+      <div class="form-group">
+          <label class="sr-only" for="exampleInputPassword2">Username</label>
+          <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Username" name="username" autofocus>
+      </div>
+  
+      <div class="form-group">
+          <label class="sr-only" for="exampleInputPassword2">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" name="password">
+      </div>
+
+    <button type="submit" class="btn btn-primary" >Login</button>
+  </div>
+ 
+  
+</form>
+		
+	</div>
+	
+	<div class="jumbotron">
+		<h1 style="font-size: 250px; text-shadow: black 0.01em 0.01em 0.01em;">WTW.</h1>
+		<h4 style="font-size: 25px; letter-spacing: 2px;">What's the weather?</h4>
+	</div>	
+
+	<script>
+	$('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text("Rain or shine, it's free.")
+  modal.find('.modal-body input').val(recipient)
+})
+	</script>
+</body>
+</html>

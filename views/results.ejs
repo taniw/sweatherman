@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Results</title>
+</head>
+<body>
+	<h1><%= location.name %></h1>
+	<ul>
+		<li> <%=Math.floor((location.main.temp - 273.15) * 1.8 + 32) %> °F</li>
+		<li> <%=location.weather[0].description%></li>
+	</ul>
+
+	<button><a href="http://localhost:8000/profile">Check another city</a></button>
+	<br/>
+	<button><a href="#">Save City</a></button>
+
+</body>
+</html>
