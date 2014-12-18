@@ -137,18 +137,13 @@ app.get('/logout', function(req, res) {
 
 
 
-
-
-
-// goal 
+//connecting the two tables, saving the city location to the users_id 
 app.post('/locations/create', function(req, res) {
-	
 	db.query('INSERT INTO locations (location, users_id) VALUES ($1, $2)', [req.body.location, req.user.id], function(err, dbRes) {
 		if (!err) {
 			res.redirect('/profile');
 		}
 	});
 });
-  // db.query => INSERT into LOCATIONS
-  // LOCATIONS    look at other forms
-  // user_id, which is the foreign key       req.user.id
+
+//req.user.id = current user

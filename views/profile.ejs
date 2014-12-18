@@ -6,12 +6,14 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
-	<title>Profile</title>
+	<title><% if (user) { %>
+				<%= user.username %>
+				<% } %></title>
 
 <style>
+
 h1 {
-	font-size: 175px;
-	
+	font-size: 175px;	
 }
 
 .topbar {
@@ -30,17 +32,12 @@ h1 {
 	margin-right: 15px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: lighter;
-	letter-spacing: 1px;
-
-	
+	letter-spacing: 1px;	
 }
 
 .content {
 	display: inline-block;
 }
-
-
-
 
 h2 {
 	margin-top: -10px;
@@ -63,8 +60,64 @@ h2 {
 	width: 500px;
 }
 
+.scrollable-menu {
+    width: 300px;
+    max-height: 200px;
+    overflow-x: hidden;
 
+}
 
+#delete {
+	float: right;
+}
+
+.btn-group {
+	width: 300px;
+	margin-top: 30px;
+
+}
+
+.pull-right {
+	float: right;
+}
+
+#logout {
+	text-decoration: none;
+	color: white;
+}
+
+img {
+	width: 263px;
+
+}
+
+footer {
+	margin-left: 30px;
+
+}
+
+.deletes {
+	float: right;
+	margin-top: -24px;
+	margin-right: 15px;
+}
+
+.btn-circle {
+  width: 17px;
+  height: 17px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+
+.glyphicon-minus {
+	float: right;
+	margin-top: -6px;
+	margin-right: 1.5px;
+
+}
 
 
 </style>
@@ -79,7 +132,7 @@ h2 {
 				<% } %>
 			</p>
 		
-		<button type="submit" class="btn btn-primary"><a href="http://localhost:8000/logout">Logout</a></button>
+		<button type="submit" class="btn btn-primary"><a id="logout" href="http://localhost:8000/logout">Logout</a></button>
 		</div>
 	</div>
 
@@ -93,26 +146,42 @@ h2 {
   </div>
   <button type="submit" class="btn btn-default">Search</button>
 </form>
-	</div>
-<ul>
- <% for (var i=0; i < locations.length; i++) { %>
+
+
+<div class="btn-group">
+  <button type="button" class="btn btn-danger col-sm-10">MY CITIES. MY CITIES.</button>
+  <button type="button" class="btn btn-danger dropdown-toggle col-sm-2" data-toggle="dropdown" aria-expanded="false">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu scrollable-menu" role="menu">
+    <% for (var i=0; i < locations.length; i++) { %>
  		<li><a href="http://localhost:8000/results?city=<%=locations[i].location%>"><%= locations[i].location %></a>
 
- 		<form action="/locations/<%= locations[i].id %>?_method=DELETE" method="POST">
-		<input type="submit" value="DELETE">
-	</form>
+ 		<span class="deletes">
+ 			<form class="pull-right" action="/locations/<%= locations[i].id %>?_method=DELETE" method="POST">
+				<button class="btn btn-default btn-circle" type="submit" value="delete"><i class="glyphicon glyphicon-minus">
+					<!--<input type="submit" value="delete">-->
+					</i>
+				</button>
+			</form>
+		</span>
 
 	</li>
  <% } %>
+   </ul>
+</div>
+	</div>
+</div>
 
 
-</ul>
-
+<footer>
+	<img src="http://i.imgur.com/yOfP8nR.jpg">
+</footer>
 
 
 </body>
 </html>
-
 
 
 
