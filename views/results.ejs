@@ -30,11 +30,34 @@ a:hover {
 
 .pull-right {
 	float: right !important;
-	co
+	text-align: center;
+	background-color: grey;
+	padding: 0px 150px 20px 20px;
+	
 }
 
+p {
+	color: white;
+}
 
+#temp {
+	font-size: 150px;
+	font-weight: bold;
+}
 
+#degree {
+	font-weight: lighter;
+
+}
+
+#description {
+	font-size: 40px;
+	margin-top: -50px;
+}
+
+.button {
+	float: left;
+}
 
 </style>
 
@@ -56,15 +79,19 @@ a:hover {
 	
 	
 	<div class="pull-right">
-		<p id="temp"> <%=Math.floor((location.main.temp - 273.15) * 1.8 + 32) %> °F</p>
+		<p id="temp"> <%=Math.floor((location.main.temp - 273.15) * 1.8 + 32) %><span id="degree">°F</span></p>
 		<p id="description"> <%=location.weather[0].description%></p>
 	
 
-		<button><a href="http://localhost:3000/profile">Check another city</a></button>
-		<form type="submit" method="POST" action="/locations/create">
-			<input type="hidden" name="location" value="<%= location.name %>">
-			<input type="submit" value="Save City">
-		</form>
+		
+		<div class="button">
+			<button><a href="http://localhost:8000/profile">Check another city</a></button>
+		</div>
+			<form type="submit" method="POST" action="/locations/create">
+				<input type="hidden" name="location" value="<%= location.name %>">
+				<input type="submit" value="Save City">
+			</form>
+		</div>
 	</div>
 
 </body>

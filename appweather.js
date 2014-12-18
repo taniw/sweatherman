@@ -58,7 +58,7 @@ var localStrategy = new LocalStrategy(
 passport.use(localStrategy);
 
 
-app.listen(3000, function() {
+app.listen(8000, function() {
 	console.log("I'm working!");
 });
 
@@ -81,7 +81,11 @@ app.post('/sessions/new', passport.authenticate('local',
 app.get('/profile', function(req, res) {
 	console.log(req.user)
 	var user = req.user
-	res.render('profile', {user: user});
+	db.query("SELECT * FROM locations WHERE users_id=$1", [req.user.id], function(err, dbRes) {
+		if (!err) {
+			res.render('profile', {user: user, locations: dbRes.rows});
+		}
+	});	
 });
 
 app.get('/results', function(req, res) {
@@ -117,6 +121,7 @@ app.get('/logout', function(req, res) {
 	req.logout();
 	res.redirect('/')
 });
+
 
 
 
