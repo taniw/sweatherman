@@ -96,8 +96,39 @@ h2 {
 	</div>
 <ul>
  <% for (var i=0; i < locations.length; i++) { %>
- 		<li><a href="http://localhost:8000/results?city=<%=locations[i].location%>"><%= locations[i].location %></a></li>
+ 		<li><a href="http://localhost:8000/results?city=<%=locations[i].location%>"><%= locations[i].location %></a>
+
+ 		<form action="/locations/<%= locations[i].id %>?_method=DELETE" method="POST">
+		<input type="submit" value="DELETE">
+	</form>
+
+	</li>
  <% } %>
+
+
 </ul>
+
+
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -101,6 +101,19 @@ app.get('/results', function(req, res) {
 });
 
 
+app.delete('/locations/:id', function(req, res) {
+	db.query("SELECT * FROM locations WHERE id=$1 AND users_id=$2", [req.params.id, req.user.id], function(err, dbRes) {
+
+		db.query("DELETE FROM locations WHERE id=$1", [req.params.id], function(err, dbRes) {
+			if(!err) {
+				res.redirect('/profile');
+			}
+		});
+	});
+});
+
+
+
 //New user sign up
 // app.get('/users/new', function(req, res) {
 // 	res.render('users/new');
