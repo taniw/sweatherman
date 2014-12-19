@@ -7,11 +7,13 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
 <style>
 
 h1 {
-	font-size: 60px;
+	font-size: 70px;
 	text-align: center;
+	padding-top: 20px;
 }
 
 .topbar {
@@ -22,53 +24,53 @@ h1 {
 	text-align: right;
 }
 
-a {
-	color: white;
-}
-a:hover {
+#logout {
 	text-decoration: none;
 	color: white;
 }
 
+.button1 {
+	text-align: center;
+}
 
-#degree {
-	font-weight: lighter;
+#checkCity {
+	text-decoration: none;
+	color: black;
+}
 
+.button2 {
+	
+	text-align: center;
+	padding-top: 20px;
 }
 
 #description {
 	font-size: 50px;
+	text-transform: uppercase;
 	
 }
 
-.button {
-	float: left;
-}
-
-#circle {
-	width:250px;
-	height:250px;
-	border-radius:250px;
+.circle {
+	width:290px;
+	height:290px;
+	border-radius:290px;
 	font-size:60px;
 	color:#fff;
-	line-height: 250px;
+	line-height: 290px;
 	text-align:center;
-
 	background:#223944;
-	
 	vertical-align: center;
 	font-family: 'Raleway', sans-serif;
 }
 
 #temp {
-	float: left;
-	margin-left: 40px;
+	margin: 0 auto;
+	
 }
+
 
 ul.img-list {
 list-style-type: none;
-margin: 0;
-padding: 0;
 text-align: center;
 }
 
@@ -84,14 +86,15 @@ span.text-content {
   color: white;
   cursor: pointer;
   display: table;
-  width:250px;
-  height:250px;
-  border-radius:250px;
+  width:290px;
+  height:290px;
+  border-radius:290px;
   left: 0;
   position: absolute;
   top: 0;
   opacity: 0;
   font-size: 150px;
+  font-family: 'Oswald', sans-serif;
 
 }
  
@@ -104,6 +107,17 @@ span.text-content span {
 ul.img-list li:hover span.text-content {
   opacity: 1;
 }
+
+#middle {
+	font-size: 30px;
+
+}
+
+.img-list {
+	margin-top: 60px;
+}
+
+
 </style>
 
 
@@ -113,49 +127,32 @@ ul.img-list li:hover span.text-content {
 
 	<div class="topbar">
 		<div class="content">
-		
-		<button type="button" class="btn btn-primary"><a href="/logout">Logout</a></button>
+			<button  type="button" class="btn btn-primary"><a id="logout" href="/logout">Logout</a></button>
 		</div>
 	</div>
 
-	
 		<h1><%= location.name %> . <%= location.sys.country %></h1>
 	
-	
-	
-	<!--<div class="pull-right">
-		<p class="circle" id="temp"> <%=Math.floor((location.main.temp - 273.15) * 1.8 + 32) %><span id="degree">°F</span></p> 
+	<div id="temp">
+		<ul class="img-list">
+			<li><p class="circle">°F</p> <br><span class="text-content"><span><%=Math.floor((location.main.temp - 273.15) * 1.8 + 32) %></span></span></li>
 
+			<li><p class="circle" id="middle">rain or shine?</p> <br><span id="description" class="text-content"><span><%=location.weather[0].description%></span></span></li>
 
-		<p><%=Math.floor(location.main.temp - 273.15) %><span id="degree">°C</span></p>
-
-		 
-
-		<p id="description"> <%=location.weather[0].description%></p>-->
-	
-
-		
-		<div class="button">
-			<button><a href="/profile">Check another city</a></button>
-		</div>
-			<form type="submit" method="POST" action="/locations/create">
-				<input type="hidden" name="location" value="<%= location.name %>">
-				<input type="submit" value="Save City">
-			</form>
-		</div>
+			<li><p class="circle">°C</p><br><span class="text-content"><span><%=Math.floor(location.main.temp - 273.15) %></span></span></li>
+		</ul>
 	</div>
 
-<ul class="img-list">
-	<li><p id="circle">°F</p> <br>
-	<span class="text-content"><span><%=Math.floor((location.main.temp - 273.15) * 1.8 + 32) %></span></span></li>
+	<div class="button1">
+			<button type="submit" class="btn btn-default btn-lg"><a id="checkCity" href="/profile">Check another city</a></button>
+	</div>
 
-	<li><p id="circle"></p><br>
-	<span id="description" class="text-content"><span><%=location.weather[0].description%></span></span></li>
-
-	<li><p id="circle">°C</p><br>
-	<span class="text-content"><span><%=Math.floor(location.main.temp - 273.15) %></span></li>
-</ul>
-
+	<div class="button2">
+			<form type="submit" method="POST" action="/locations/create">
+				<input type="hidden" name="location" value="<%= location.name %>">
+				<button style="width:185px" type="submit" class="btn btn-danger btn-lg" value="Save City">Save City</button>
+			</form>
+	</div>
 
 
 </body>

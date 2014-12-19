@@ -6,6 +6,10 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300' rel='stylesheet' type='text/css'>
+	<link rel="icon" type="image/ico" href="http://www.mysite.com/favicon.ico"/>
+
+	
+
 	<title><% if (user) { %>
 				<%= user.username %>
 				<% } %></title>
@@ -93,7 +97,7 @@ img {
 	position: fixed;
 	bottom: 0px;
 	left: 0px;
-	width: 320px;
+	width: 360px;
 	height: auto;
 	margin-left: 30px;
 
@@ -140,7 +144,7 @@ footer {
 				<% } %>
 			</p>
 		
-		<button type="submit" class="btn btn-primary"><a id="logout" href="http://localhost:8000/logout">Logout</a></button>
+		<button type="submit" class="btn btn-primary"><a id="logout" href="/logout">Logout</a></button>
 		</div>
 	</div>
 
@@ -160,7 +164,7 @@ footer {
 
 
 <div class="btn-group">
-  <button type="button" class="btn btn-danger col-sm-10">MY CITIES. MY CITIES.</button>
+  <button type="button" class="btn btn-danger col-sm-10">MY COLLECTION OF CITIES</button>
   <button type="button" class="btn btn-danger dropdown-toggle col-sm-2" data-toggle="dropdown" aria-expanded="false">
     <span class="caret"></span>
     <span class="sr-only">Toggle Dropdown</span>
