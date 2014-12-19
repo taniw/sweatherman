@@ -41,23 +41,26 @@ h1 {
 
 h2 {
 	margin-top: -10px;
-	font-size: 45px;
+	font-size: 52px;
 }
 
-.weather {
+.container {
 	text-align: center;
-
+	width: 560px;
+	height: 639px;
+	margin-left: -270px;
+	left: 50%;
+	position: fixed;
 }
 
 .navbar-form {
 	margin: 0 auto;
 	text-align: center;
-	padding-top: 20px;
 
 }
 
 #search {
-	width: 500px;
+	width: 410px;
 }
 
 .scrollable-menu {
@@ -73,7 +76,7 @@ h2 {
 
 .btn-group {
 	width: 300px;
-	margin-top: 30px;
+	margin-top: 40px;
 
 }
 
@@ -87,7 +90,12 @@ h2 {
 }
 
 img {
-	width: 278px;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 320px;
+	height: auto;
+	margin-left: 30px;
 
 }
 
@@ -115,7 +123,7 @@ footer {
 .glyphicon-minus {
 	float: right;
 	margin-top: -6px;
-	margin-right: 1.5px;
+	margin-right: 2px;
 
 }
 
@@ -136,15 +144,18 @@ footer {
 		</div>
 	</div>
 
-	<div class="weather">
+	
+
+	<div class="container">
 		<h1>Hello.</h1>
-		<h2>What's the Weather?</h2>
+		<h2>How's the Weather?</h2>
 
 		<form class="navbar-form" role="search" method="GET" action="/results">
   <div class="form-group">
     <input id="search" type="text" class="form-control input-md" placeholder="City Name" name="city">
+    <button type="submit" class="btn btn-default">Search</button>
   </div>
-  <button type="submit" class="btn btn-default">Search</button>
+  
 </form>
 
 
@@ -174,10 +185,8 @@ footer {
 	</div>
 </div>
 
+	<img src="http://i.imgur.com/D8VrAHX.png">
 
-<footer>
-	<img src="http://i.imgur.com/yOfP8nR.jpg">
-</footer>
 
 
 </body>

@@ -6,10 +6,12 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
 <style>
 
 h1 {
-	font-size: 140px;
+	font-size: 60px;
+	text-align: center;
 }
 
 .topbar {
@@ -28,22 +30,6 @@ a:hover {
 	color: white;
 }
 
-.pull-right {
-	float: right !important;
-	text-align: center;
-	background-color: grey;
-	padding: 0px 150px 20px 20px;
-	
-}
-
-p {
-	color: white;
-}
-
-#temp {
-	font-size: 150px;
-	font-weight: bold;
-}
 
 #degree {
 	font-weight: lighter;
@@ -51,52 +37,101 @@ p {
 }
 
 #description {
-	font-size: 40px;
-	margin-top: -50px;
+	font-size: 50px;
+	
 }
 
 .button {
 	float: left;
 }
 
-#username {
-	font-size: 18px;
-	float: left;
-	color: white;
-	margin-top: 4px;
-	margin-right: 15px;
-	font-family: 'Roboto', sans-serif;
-	font-weight: lighter;
-	letter-spacing: 1px;	
+#circle {
+	width:250px;
+	height:250px;
+	border-radius:250px;
+	font-size:60px;
+	color:#fff;
+	line-height: 250px;
+	text-align:center;
+
+	background:#223944;
+	
+	vertical-align: center;
+	font-family: 'Raleway', sans-serif;
 }
 
+#temp {
+	float: left;
+	margin-left: 40px;
+}
+
+ul.img-list {
+list-style-type: none;
+margin: 0;
+padding: 0;
+text-align: center;
+}
+
+ul.img-list li {
+width: 350px;
+height: 350px;
+position: relative;
+display: inline-block;
+}
+
+span.text-content {
+  background: rgba(51,204,204,.9);
+  color: white;
+  cursor: pointer;
+  display: table;
+  width:250px;
+  height:250px;
+  border-radius:250px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  font-size: 150px;
+
+}
+ 
+span.text-content span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+ul.img-list li:hover span.text-content {
+  opacity: 1;
+}
 </style>
 
 
 
 </head>
 <body>
+
 	<div class="topbar">
 		<div class="content">
 		
-		<p><% if (user) { %>
-				<%= user.username %>
-				<% } %></p>
 		<button type="button" class="btn btn-primary"><a href="/logout">Logout</a></button>
 		</div>
 	</div>
 
-	<div class="container">
-		<h1><%= location.name %>, <%= location.sys.country %></h1>
-	</div>
+	
+		<h1><%= location.name %> . <%= location.sys.country %></h1>
 	
 	
-	<div class="pull-right">
-		<p id="temp"> <%=Math.floor((location.main.temp - 273.15) * 1.8 + 32) %><span id="degree">°F</span> / <%=Math.floor(location.main.temp - 273.15) %><span id="degree">°C</span></p>
+	
+	<!--<div class="pull-right">
+		<p class="circle" id="temp"> <%=Math.floor((location.main.temp - 273.15) * 1.8 + 32) %><span id="degree">°F</span></p> 
+
+
+		<p><%=Math.floor(location.main.temp - 273.15) %><span id="degree">°C</span></p>
 
 		 
 
-		<p id="description"> <%=location.weather[0].description%></p>
+		<p id="description"> <%=location.weather[0].description%></p>-->
 	
 
 		
@@ -109,6 +144,19 @@ p {
 			</form>
 		</div>
 	</div>
+
+<ul class="img-list">
+	<li><p id="circle">°F</p> <br>
+	<span class="text-content"><span><%=Math.floor((location.main.temp - 273.15) * 1.8 + 32) %></span></span></li>
+
+	<li><p id="circle"></p><br>
+	<span id="description" class="text-content"><span><%=location.weather[0].description%></span></span></li>
+
+	<li><p id="circle">°C</p><br>
+	<span class="text-content"><span><%=Math.floor(location.main.temp - 273.15) %></span></li>
+</ul>
+
+
 
 </body>
 </html>

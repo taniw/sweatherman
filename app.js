@@ -90,7 +90,7 @@ app.get('/results', function(req, res) {
 			if(!err) {
 				var city = JSON.parse(body);
 				console.log(city);
-				res.render('results.ejs', {location: city, user: user});
+				res.render('results.ejs', {location: city});
 			}
 	});
 });
@@ -139,6 +139,6 @@ app.post('/locations/create', function(req, res) {
 
 //req.user.id = current user
 
-app.listen(process.env.PORT || 8000, function() {
+app.listen(8000, function() {
 	console.log("I'm working!");
 });
