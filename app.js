@@ -90,7 +90,7 @@ app.get('/results', function(req, res) {
 			if(!err) {
 				var city = JSON.parse(body);
 				console.log(city);
-				res.render('results.ejs', {location: city});
+				res.render('results.ejs', {location: city, user: user});
 			}
 	});
 });
