@@ -59,6 +59,17 @@ p {
 	float: left;
 }
 
+#username {
+	font-size: 18px;
+	float: left;
+	color: white;
+	margin-top: 4px;
+	margin-right: 15px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: lighter;
+	letter-spacing: 1px;	
+}
+
 </style>
 
 
@@ -68,7 +79,9 @@ p {
 	<div class="topbar">
 		<div class="content">
 		
-		
+		<p><% if (user) { %>
+				<%= user.username %>
+				<% } %></p>
 		<button type="button" class="btn btn-primary"><a href="/logout">Logout</a></button>
 		</div>
 	</div>
