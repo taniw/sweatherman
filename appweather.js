@@ -58,7 +58,7 @@ var localStrategy = new LocalStrategy(
 passport.use(localStrategy);
 
 
-app.listen(8000, function() {
+app.listen(process.env.PORT || 8000, function() {
 	console.log("I'm working!");
 });
 
@@ -115,10 +115,6 @@ app.delete('/locations/:id', function(req, res) {
 
 
 //New user sign up
-// app.get('/users/new', function(req, res) {
-// 	res.render('users/new');
-// });
-
 app.post('/users', function(req, res) {
 	var params = [req.body.username, req.body.password, req.body.email];
 
